@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+
+database/ecowaste.db
+
+static/uploads/
+
+.vscode/

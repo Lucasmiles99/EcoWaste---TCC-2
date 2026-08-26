@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cadastrar Ecoponto - EcoWaste</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header>
+    <h2>EcoWaste</h2>
+</header>
+
+<main>
+
+    <h1>Cadastrar Ecoponto</h1>
+
+    <p>
+        Informe os dados do ponto de recebimento de resíduos.
+    </p>
+
+    <div class="card">
+
+        <form
+            action="{{ url_for('salvar_ecoponto') }}"
+            method="POST"
+        >
+
+            <label for="nome">
+                <strong>Nome do Ecoponto</strong>
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                placeholder="Ex.: Ecoponto Municipal"
+            >
+
+            <label for="endereco">
+                <strong>Endereço</strong>
+            </label>
+
+            <input
+                type="text"
+                id="endereco"
+                name="endereco"
+                required
+                placeholder="Ex.: Rua XV de Novembro, 100"
+            >
+
+            <label for="cidade">
+                <strong>Cidade</strong>
+            </label>
+
+            <input
+                type="text"
+                id="cidade"
+                name="cidade"
+                required
+                placeholder="Ex.: Rio do Sul"
+            >
+
+            <label for="localizacao_maps">
+                <strong>Localização no Google Maps</strong>
+            </label>
+
+            <input
+                type="text"
+                id="localizacao_maps"
+                name="localizacao_maps"
+                placeholder="Cole aqui o link do Google Maps"
+            >
+
+            <label for="imagem">
+                <strong>Imagem</strong>
+            </label>
+
+            <input
+                type="text"
+                id="imagem"
+                name="imagem"
+                placeholder="Ex.: ecoponto_rio_do_sul.jpg"
+            >
+
+            <label for="descricao">
+                <strong>Descrição</strong>
+            </label>
+
+            <textarea
+                id="descricao"
+                name="descricao"
+                rows="5"
+                placeholder="Descreva o Ecoponto..."
+            ></textarea>
+
+            <h3>Materiais aceitos</h3>
+
+            {% if materiais %}
+
+                {% for material in materiais %}
+
+                    <div style="margin-bottom: 10px;">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                name="materiais"
+                                value="{{ material.id }}"
+                                style="
+                                    width: auto;
+                                    margin-right: 8px;
+                                "
+                            >
+
+                            {{ material.nome }}
+
+                            {% if material.categoria %}
+
+                                - {{ material.categoria }}
+
+                            {% endif %}
+
+                        </label>
+
+                    </div>
+
+                {% endfor %}
+
+            {% else %}
+
+                <p>
+                    Nenhum material cadastrado ainda.
+                </p>
+
+                <p>
+                    Cadastre materiais antes de associá-los ao Ecoponto.
+                </p>
+
+            {% endif %}
+
+            <div
+                style="
+                    margin-top: 25px;
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                "
+            >
+
+                <button
+                    type="submit"
+                    class="botao"
+                >
+                    Salvar Ecoponto
+                </button>
+
+                <a
+                    href="{{ url_for('listar_ecopontos') }}"
+                    class="botao"
+                >
+                    Voltar
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

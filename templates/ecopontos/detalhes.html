@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ ecoponto.nome }} - EcoWaste</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header>
+    <h2>EcoWaste</h2>
+</header>
+
+<main>
+
+    <div class="card">
+
+        <h1>
+            {{ ecoponto.nome }}
+        </h1>
+
+        <p>
+            <strong>Cidade:</strong>
+            {{ ecoponto.cidade }}
+        </p>
+
+        <p>
+            <strong>Endereço:</strong>
+            {{ ecoponto.endereco }}
+        </p>
+
+        {% if ecoponto.descricao %}
+
+            <h3>Descrição</h3>
+
+            <p>
+                {{ ecoponto.descricao }}
+            </p>
+
+        {% endif %}
+
+        {% if ecoponto.imagem %}
+
+            <h3>Imagem do Ecoponto</h3>
+
+            <p>
+                Arquivo:
+                <strong>
+                    {{ ecoponto.imagem }}
+                </strong>
+            </p>
+
+        {% endif %}
+
+        {% if ecoponto.localizacao_maps %}
+
+            <h3>Localização</h3>
+
+            <a
+                href="{{ ecoponto.localizacao_maps }}"
+                target="_blank"
+                class="botao"
+            >
+                Abrir no Google Maps
+            </a>
+
+        {% endif %}
+
+        <h3>Materiais aceitos</h3>
+
+        {% if materiais %}
+
+            <div class="grid">
+
+                {% for material in materiais %}
+
+                    <div class="card">
+
+                        <h3>
+                            {{ material["nome"] }}
+                        </h3>
+
+                        {% if material["categoria"] %}
+
+                            <p>
+                                <strong>Categoria:</strong>
+                                {{ material["categoria"] }}
+                            </p>
+
+                        {% endif %}
+
+                        {% if material["descricao"] %}
+
+                            <p>
+                                {{ material["descricao"] }}
+                            </p>
+
+                        {% endif %}
+
+                    </div>
+
+                {% endfor %}
+
+            </div>
+
+        {% else %}
+
+            <div class="vazio">
+
+                <p>
+                    Nenhum material associado a este Ecoponto.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+        <div
+            style="
+                margin-top: 30px;
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            "
+        >
+
+            <a
+                href="{{ url_for('listar_ecopontos') }}"
+                class="botao"
+            >
+                Voltar para Ecopontos
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Editar Empresa - EcoWaste</title>
+</head>
+
+<body>
+
+    <h1>Editar Empresa</h1>
+
+    <a href="/empresas">
+        Voltar para empresas
+    </a>
+
+    <hr>
+
+    <form method="POST">
+
+        <p>
+            <label>Nome da empresa:</label>
+            <br>
+
+            <input
+                type="text"
+                name="nome"
+                value="{{ empresa.nome }}"
+                required
+            >
+        </p>
+
+
+        <p>
+            <label>Cidade:</label>
+            <br>
+
+            <input
+                type="text"
+                name="cidade"
+                value="{{ empresa.cidade }}"
+                required
+            >
+        </p>
+
+
+        <p>
+            <label>Segmento:</label>
+            <br>
+
+            <input
+                type="text"
+                name="segmento"
+                value="{{ empresa.segmento }}"
+            >
+        </p>
+
+
+        <p>
+            <label>Contato:</label>
+            <br>
+
+            <input
+                type="text"
+                name="contato"
+                value="{{ empresa.contato }}"
+            >
+        </p>
+
+
+        <button type="submit">
+            Salvar alterações
+        </button>
+
+    </form>
+
+</body>
+
+</html>

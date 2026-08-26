@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Materiais - EcoWaste</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header>
+    <h2>EcoWaste</h2>
+</header>
+
+<main>
+
+    <h1>Materiais</h1>
+
+    <p>
+        Consulte os tipos de resíduos eletrônicos cadastrados no sistema.
+    </p>
+
+    <div class="acoes-topo">
+
+        <a
+            href="{{ url_for('cadastrar_material') }}"
+            class="botao"
+        >
+            Cadastrar Material
+        </a>
+
+    </div>
+
+    {% if materiais %}
+
+        <div class="grid">
+
+            {% for material in materiais %}
+
+                <div class="card">
+
+                    <h2>
+                        {{ material.nome }}
+                    </h2>
+
+                    {% if material.categoria %}
+
+                        <p>
+                            <strong>Categoria:</strong>
+                            {{ material.categoria }}
+                        </p>
+
+                    {% endif %}
+
+                    {% if material.descricao %}
+
+                        <p>
+                            {{ material.descricao }}
+                        </p>
+
+                    {% endif %}
+
+                    <div class="card-acoes">
+
+                        <a
+                            href="{{
+                                url_for(
+                                    'detalhes_material',
+                                    id=material.id
+                                )
+                            }}"
+                            class="botao"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <form
+                            action="{{
+                                url_for(
+                                    'excluir_material',
+                                    id=material.id
+                                )
+                            }}"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="excluir"
+                                onclick="
+                                    return confirm(
+                                        'Deseja excluir este material?'
+                                    );
+                                "
+                            >
+                                Excluir
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="vazio">
+
+            <p>
+                Nenhum material cadastrado até o momento.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</main>
+
+</body>
+
+</html>

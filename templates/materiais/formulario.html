@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Cadastrar Material - EcoWaste</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header>
+    <h2>EcoWaste</h2>
+</header>
+
+<main>
+
+    <h1>Cadastrar Material</h1>
+
+    <p>
+        Cadastre os tipos de resíduos eletrônicos que poderão ser
+        associados aos Ecopontos.
+    </p>
+
+    <div class="card">
+
+        <form
+            action="{{ url_for('cadastrar_material') }}"
+            method="POST"
+        >
+
+            <label for="nome">
+                <strong>Nome do material</strong>
+            </label>
+
+            <input
+                type="text"
+                id="nome"
+                name="nome"
+                required
+                placeholder="Ex.: Lâmpada"
+            >
+
+            <label for="categoria">
+                <strong>Categoria</strong>
+            </label>
+
+            <input
+                type="text"
+                id="categoria"
+                name="categoria"
+                placeholder="Ex.: Iluminação"
+            >
+
+            <label for="descricao">
+                <strong>Descrição</strong>
+            </label>
+
+            <textarea
+                id="descricao"
+                name="descricao"
+                rows="5"
+                placeholder="Informe características e orientações sobre o material."
+            ></textarea>
+
+            <div
+                style="
+                    margin-top: 25px;
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                "
+            >
+
+                <button
+                    type="submit"
+                    class="botao"
+                >
+                    Salvar Material
+                </button>
+
+                <a
+                    href="{{ url_for('listar_materiais') }}"
+                    class="botao"
+                >
+                    Voltar
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</main>
+
+</body>
+
+</html>

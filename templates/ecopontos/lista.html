@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Ecopontos - EcoWaste</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+</head>
+
+<body>
+
+<header>
+    <h2>EcoWaste</h2>
+</header>
+
+<main>
+
+    <h1>Ecopontos</h1>
+
+    <p>
+        Consulte os pontos cadastrados para recebimento de materiais.
+    </p>
+
+    <div class="acoes-topo">
+
+        <a
+            href="{{ url_for('novo_ecoponto') }}"
+            class="botao"
+        >
+            Cadastrar Ecoponto
+        </a>
+
+    </div>
+
+    {% if ecopontos %}
+
+        <div class="grid">
+
+            {% for ecoponto in ecopontos %}
+
+                <div class="card">
+
+                    <h2>
+                        {{ ecoponto.nome }}
+                    </h2>
+
+                    <p>
+                        <strong>Cidade:</strong>
+                        {{ ecoponto.cidade }}
+                    </p>
+
+                    <p>
+                        <strong>Endereço:</strong>
+                        {{ ecoponto.endereco }}
+                    </p>
+
+                    {% if ecoponto.descricao %}
+
+                        <p>
+                            {{ ecoponto.descricao }}
+                        </p>
+
+                    {% endif %}
+
+                    <div class="card-acoes">
+
+                        <a
+                            href="{{
+                                url_for(
+                                    'detalhes_ecoponto',
+                                    id=ecoponto.id
+                                )
+                            }}"
+                            class="botao"
+                        >
+                            Ver detalhes
+                        </a>
+
+                        <form
+                            action="{{
+                                url_for(
+                                    'excluir_ecoponto',
+                                    id=ecoponto.id
+                                )
+                            }}"
+                            method="POST"
+                        >
+
+                            <button
+                                type="submit"
+                                class="excluir"
+                                onclick="
+                                    return confirm(
+                                        'Deseja excluir este Ecoponto?'
+                                    );
+                                "
+                            >
+                                Excluir
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="vazio">
+
+            <p>
+                Nenhum Ecoponto cadastrado até o momento.
+            </p>
+
+        </div>
+
+    {% endif %}
+
+</main>
+
+</body>
+
+</html>
