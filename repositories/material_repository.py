@@ -11,12 +11,14 @@ class MaterialRepository:
             INSERT INTO material (
                 nome,
                 categoria,
+                imagem,
                 descricao
             )
-            VALUES (?, ?, ?)
+            VALUES (?, ?, ?, ?)
         """, (
             material.nome,
             material.categoria,
+            material.imagem,
             material.descricao
         ))
 
@@ -37,6 +39,7 @@ class MaterialRepository:
                 id,
                 nome,
                 categoria,
+                imagem,
                 descricao
             FROM material
             ORDER BY id DESC
@@ -47,10 +50,12 @@ class MaterialRepository:
         materiais = []
 
         for registro in registros:
+
             material = Material(
                 id=registro["id"],
                 nome=registro["nome"],
                 categoria=registro["categoria"],
+                imagem=registro["imagem"],
                 descricao=registro["descricao"]
             )
 
@@ -69,10 +74,13 @@ class MaterialRepository:
                 id,
                 nome,
                 categoria,
+                imagem,
                 descricao
             FROM material
             WHERE id = ?
-        """, (id,))
+        """, (
+            id,
+        ))
 
         registro = cursor.fetchone()
 
@@ -85,6 +93,7 @@ class MaterialRepository:
             id=registro["id"],
             nome=registro["nome"],
             categoria=registro["categoria"],
+            imagem=registro["imagem"],
             descricao=registro["descricao"]
         )
 
@@ -97,16 +106,19 @@ class MaterialRepository:
             SET
                 nome = ?,
                 categoria = ?,
+                imagem = ?,
                 descricao = ?
             WHERE id = ?
         """, (
             material.nome,
             material.categoria,
+            material.imagem,
             material.descricao,
             material.id
         ))
 
         conexao.commit()
+
         conexao.close()
 
         return material
@@ -118,7 +130,9 @@ class MaterialRepository:
         cursor.execute("""
             DELETE FROM material
             WHERE id = ?
-        """, (id,))
+        """, (
+            id,
+        ))
 
         conexao.commit()
 

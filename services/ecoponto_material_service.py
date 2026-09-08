@@ -5,6 +5,7 @@ from repositories.ecoponto_material_repository import (
 from repositories.ecoponto_repository import EcopontoRepository
 from repositories.material_repository import MaterialRepository
 
+
 class EcopontoMaterialService:
 
     def __init__(self):
@@ -45,6 +46,23 @@ class EcopontoMaterialService:
         return self.repository.remover_associacao(
             ecoponto_id,
             material_id
+        )
+
+    def remover_todas_associacoes(
+        self,
+        ecoponto_id
+    ):
+        ecoponto = self.ecoponto_repository.buscar_por_id(
+            ecoponto_id
+        )
+
+        if ecoponto is None:
+            raise ValueError(
+                "Ecoponto não encontrado."
+            )
+
+        return self.repository.remover_todas_associacoes(
+            ecoponto_id
         )
 
     def listar_materiais_do_ecoponto(

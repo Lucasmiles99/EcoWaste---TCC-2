@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %}
+Equipamentos - EcoWaste
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h2 class="mb-1">
+            Equipamentos Eletrônicos
+        </h2>
+
+        <p class="mb-0">
+            Equipamentos cadastrados para gerenciamento e descarte eletrônico.
+        </p>
+    </div>
+
+    <a
+        href="/equipamentos/novo"
+        class="btn btn-success"
+    >
+        Cadastrar equipamento
+    </a>
+
+</div>
+
+<hr>
+
+{% if equipamentos %}
+
+<div class="row">
+
+    {% for equipamento in equipamentos %}
+
+    <div class="col-md-6 mb-4">
+
+        <div class="card h-100">
+
+            <div class="row g-0 align-items-center">
+
+                <div class="col-md-4 text-center">
+
+                    {% if equipamento.imagem %}
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='img/equipamentos/' + equipamento.imagem
+                        ) }}"
+                        alt="{{ equipamento.nome }}"
+                        class="img-fluid p-3"
+                        style="max-height: 180px;"
+                    >
+
+                    {% else %}
+
+                    <div class="p-4">
+
+                        <span style="font-size: 70px;">
+                            ♻️
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+                <div class="col-md-8">
+
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            {{ equipamento.nome }}
+                        </h4>
+
+                        <p class="card-text">
+
+                            <strong>Categoria:</strong>
+                            {{ equipamento.categoria or "Não informada" }}
+
+                            <br>
+
+                            <strong>Marca:</strong>
+                            {{ equipamento.marca or "Não informada" }}
+
+                            <br>
+
+                            <strong>Quantidade:</strong>
+                            {{ equipamento.quantidade }}
+
+                            <br>
+
+                            <strong>Estado:</strong>
+                            {{ equipamento.estado or "Não informado" }}
+
+                        </p>
+
+                        {% if equipamento.descricao %}
+
+                        <p class="card-text">
+                            {{ equipamento.descricao }}
+                        </p>
+
+                        {% endif %}
+
+                        <div class="d-flex gap-2 flex-wrap">
+
+                            <a
+                                href="/equipamentos/{{ equipamento.id }}/editar"
+                                class="btn btn-warning btn-sm"
+                            >
+                                Editar
+                            </a>
+
+                            <form
+                                action="/equipamentos/{{ equipamento.id }}/excluir"
+                                method="POST"
+                            >
+
+                                <button
+                                    type="submit"
+                                    class="btn btn-outline-danger btn-sm"
+                                    onclick="return confirm('Deseja realmente excluir este equipamento?')"
+                                >
+                                    Excluir
+                                </button>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="alert alert-info">
+
+    Nenhum equipamento eletrônico cadastrado.
+
+</div>
+
+{% endif %}
+
+<a
+    href="/"
+    class="btn btn-secondary mt-3"
+>
+    Voltar ao início
+</a>
+
+{% endblock %}

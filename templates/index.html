@@ -1,37 +1,73 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoWaste TCC</title>
-</head>
+{% block title %}EcoWaste - Início{% endblock %}
 
-<body>
+{% block content %}
 
-    <h1>EcoWaste</h1>
+<nav class="mb-4">
 
-    <h2>Gestão de Resíduos Eletrônicos</h2>
+    <div class="d-flex flex-wrap gap-2">
 
-    <p>
-        Sistema para gerenciamento e análise do descarte
-        de resíduos eletrônicos das empresas de TIC
-        do Alto Vale do Itajaí.
-    </p>
+        <a
+            href="{{ url_for('listar_empresas') }}"
+            class="btn btn-success"
+        >
+            Empresas
+        </a>
 
-    <hr>
+        <a
+            href="{{ url_for('listar_equipamentos') }}"
+            class="btn btn-success"
+        >
+            Equipamentos
+        </a>
 
-    <h3>Módulos do sistema</h3>
+        <a
+            href="{{ url_for('listar_materiais') }}"
+            class="btn btn-success"
+        >
+            Materiais
+        </a>
 
-    <ul>
-        <li>Empresas</li>
-        <li>Equipamentos</li>
-        <li>Descartes</li>
-        <li>Checklist Ambiental</li>
-        <li>Dashboard</li>
-        <li>Exportação para Power BI</li>
-    </ul>
+        <a
+            href="{{ url_for('listar_descartes') }}"
+            class="btn btn-success"
+        >
+            Descartes
+        </a>
 
-</body>
+        <a
+            href="{{ url_for('listar_ecopontos') }}"
+            class="btn btn-success"
+        >
+            Ecopontos
+        </a>
 
-</html>
+        <a
+            href="/checklist"
+            class="btn btn-success"
+        >
+            Checklist Ambiental
+        </a>
+
+        <a
+            href="/dashboard"
+            class="btn btn-success"
+        >
+            Dashboard
+        </a>
+
+    </div>
+
+</nav>
+
+<h2>
+    Gestão de Resíduos Eletrônicos
+</h2>
+
+<p>
+    Sistema para gerenciamento e análise do descarte de
+    resíduos eletrônicos das empresas de TIC do Alto Vale do Itajaí.
+</p>
+
+{% endblock %}

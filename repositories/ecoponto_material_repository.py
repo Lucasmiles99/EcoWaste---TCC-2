@@ -1,5 +1,6 @@
 from database.connection import conectar
 
+
 class EcopontoMaterialRepository:
 
     def associar(self, ecoponto_id, material_id):
@@ -25,7 +26,11 @@ class EcopontoMaterialRepository:
 
         return quantidade_inserida > 0
 
-    def remover_associacao(self, ecoponto_id, material_id):
+    def remover_associacao(
+        self,
+        ecoponto_id,
+        material_id
+    ):
         conexao = conectar()
         cursor = conexao.cursor()
 
@@ -46,7 +51,32 @@ class EcopontoMaterialRepository:
 
         return quantidade_excluida > 0
 
-    def listar_materiais_do_ecoponto(self, ecoponto_id):
+    def remover_todas_associacoes(
+        self,
+        ecoponto_id
+    ):
+        conexao = conectar()
+        cursor = conexao.cursor()
+
+        cursor.execute("""
+            DELETE FROM ecoponto_material
+            WHERE ecoponto_id = ?
+        """, (
+            ecoponto_id,
+        ))
+
+        conexao.commit()
+
+        quantidade_excluida = cursor.rowcount
+
+        conexao.close()
+
+        return quantidade_excluida
+
+    def listar_materiais_do_ecoponto(
+        self,
+        ecoponto_id
+    ):
         conexao = conectar()
         cursor = conexao.cursor()
 
@@ -55,13 +85,16 @@ class EcopontoMaterialRepository:
                 m.id,
                 m.nome,
                 m.categoria,
+                m.imagem,
                 m.descricao
             FROM material m
             INNER JOIN ecoponto_material em
                 ON em.material_id = m.id
             WHERE em.ecoponto_id = ?
             ORDER BY m.nome
-        """, (ecoponto_id,))
+        """, (
+            ecoponto_id,
+        ))
 
         registros = cursor.fetchall()
 
@@ -69,7 +102,10 @@ class EcopontoMaterialRepository:
 
         return registros
 
-    def listar_ecopontos_do_material(self, material_id):
+    def listar_ecopontos_do_material(
+        self,
+        material_id
+    ):
         conexao = conectar()
         cursor = conexao.cursor()
 
@@ -87,7 +123,9 @@ class EcopontoMaterialRepository:
                 ON em.ecoponto_id = e.id
             WHERE em.material_id = ?
             ORDER BY e.nome
-        """, (material_id,))
+        """, (
+            material_id,
+        ))
 
         registros = cursor.fetchall()
 

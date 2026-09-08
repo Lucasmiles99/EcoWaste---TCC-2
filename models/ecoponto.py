@@ -6,6 +6,8 @@ class Ecoponto:
         endereco,
         cidade,
         localizacao_maps="",
+        latitude=None,
+        longitude=None,
         imagem="",
         descricao="",
         id=None
@@ -15,6 +17,8 @@ class Ecoponto:
         self.endereco = endereco
         self.cidade = cidade
         self.localizacao_maps = localizacao_maps
+        self.latitude = latitude
+        self.longitude = longitude
         self.imagem = imagem
         self.descricao = descricao
 

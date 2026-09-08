@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Editar {{ ecoponto.nome }} - EcoWaste
+    </title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+<body>
+
+    <header class="ecowaste-header">
+
+        <div class="container-fluid">
+
+            <div class="row align-items-center">
+
+                <div class="col-4 text-start">
+
+                    <img
+                        src="{{ url_for('static', filename='img/logo-ifc.jpg') }}"
+                        alt="Instituto Federal Catarinense"
+                        class="logo-ifc"
+                    >
+
+                </div>
+
+                <div class="col-4 text-center">
+
+                    <h1 class="ecowaste-title">
+                        EcoWaste
+                    </h1>
+
+                </div>
+
+                <div class="col-4 text-end">
+
+                    <img
+                        src="{{ url_for('static', filename='img/logo-sustentabilidade.png') }}"
+                        alt="Sustentabilidade"
+                        class="logo-sustentabilidade"
+                    >
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="container py-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h2 class="mb-2">
+                    Editar Ecoponto
+                </h2>
+
+                <p class="mb-4">
+                    Atualize os dados do ponto de recebimento de resíduos.
+                </p>
+
+                {% if ecoponto.imagem %}
+
+                <div class="mb-4">
+
+                    <h4>
+                        Imagem atual
+                    </h4>
+
+                    <img
+                        src="{{ url_for(
+                            'static',
+                            filename='img/ecopontos/' + ecoponto.imagem
+                        ) }}"
+                        alt="Imagem do {{ ecoponto.nome }}"
+                        class="img-fluid rounded shadow-sm mt-2"
+                        style="
+                            max-height: 300px;
+                            width: auto;
+                            object-fit: contain;
+                        "
+                    >
+
+                </div>
+
+                {% endif %}
+
+                <form
+                    method="POST"
+                    action="{{
+                        url_for(
+                            'editar_ecoponto',
+                            id=ecoponto.id
+                        )
+                    }}"
+                >
+
+                    <label for="nome">
+                        <strong>Nome do Ecoponto</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        value="{{ ecoponto.nome }}"
+                        required
+                    >
+
+                    <label for="endereco">
+                        <strong>Endereço</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        name="endereco"
+                        value="{{ ecoponto.endereco }}"
+                        required
+                    >
+
+                    <label for="cidade">
+                        <strong>Cidade</strong>
+                    </label>
+
+                    <select
+                        id="cidade"
+                        name="cidade"
+                        required
+                    >
+
+                        <option value="" disabled>
+                            Selecione o município
+                        </option>
+
+                        <option
+                            value="Agrolândia"
+                            {% if ecoponto.cidade == 'Agrolândia' %}selected{% endif %}
+                        >
+                            Agrolândia
+                        </option>
+
+                        <option
+                            value="Agronômica"
+                            {% if ecoponto.cidade == 'Agronômica' %}selected{% endif %}
+                        >
+                            Agronômica
+                        </option>
+
+                        <option
+                            value="Atalanta"
+                            {% if ecoponto.cidade == 'Atalanta' %}selected{% endif %}
+                        >
+                            Atalanta
+                        </option>
+
+                        <option
+                            value="Aurora"
+                            {% if ecoponto.cidade == 'Aurora' %}selected{% endif %}
+                        >
+                            Aurora
+                        </option>
+
+                        <option
+                            value="Braço do Trombudo"
+                            {% if ecoponto.cidade == 'Braço do Trombudo' %}selected{% endif %}
+                        >
+                            Braço do Trombudo
+                        </option>
+
+                        <option
+                            value="Chapadão do Lageado"
+                            {% if ecoponto.cidade == 'Chapadão do Lageado' %}selected{% endif %}
+                        >
+                            Chapadão do Lageado
+                        </option>
+
+                        <option
+                            value="Dona Emma"
+                            {% if ecoponto.cidade == 'Dona Emma' %}selected{% endif %}
+                        >
+                            Dona Emma
+                        </option>
+
+                        <option
+                            value="Ibirama"
+                            {% if ecoponto.cidade == 'Ibirama' %}selected{% endif %}
+                        >
+                            Ibirama
+                        </option>
+
+                        <option
+                            value="Imbuia"
+                            {% if ecoponto.cidade == 'Imbuia' %}selected{% endif %}
+                        >
+                            Imbuia
+                        </option>
+
+                        <option
+                            value="Ituporanga"
+                            {% if ecoponto.cidade == 'Ituporanga' %}selected{% endif %}
+                        >
+                            Ituporanga
+                        </option>
+
+                        <option
+                            value="José Boiteux"
+                            {% if ecoponto.cidade == 'José Boiteux' %}selected{% endif %}
+                        >
+                            José Boiteux
+                        </option>
+
+                        <option
+                            value="Laurentino"
+                            {% if ecoponto.cidade == 'Laurentino' %}selected{% endif %}
+                        >
+                            Laurentino
+                        </option>
+
+                        <option
+                            value="Lontras"
+                            {% if ecoponto.cidade == 'Lontras' %}selected{% endif %}
+                        >
+                            Lontras
+                        </option>
+
+                        <option
+                            value="Mirim Doce"
+                            {% if ecoponto.cidade == 'Mirim Doce' %}selected{% endif %}
+                        >
+                            Mirim Doce
+                        </option>
+
+                        <option
+                            value="Petrolândia"
+                            {% if ecoponto.cidade == 'Petrolândia' %}selected{% endif %}
+                        >
+                            Petrolândia
+                        </option>
+
+                        <option
+                            value="Pouso Redondo"
+                            {% if ecoponto.cidade == 'Pouso Redondo' %}selected{% endif %}
+                        >
+                            Pouso Redondo
+                        </option>
+
+                        <option
+                            value="Presidente Getúlio"
+                            {% if ecoponto.cidade == 'Presidente Getúlio' %}selected{% endif %}
+                        >
+                            Presidente Getúlio
+                        </option>
+
+                        <option
+                            value="Presidente Nereu"
+                            {% if ecoponto.cidade == 'Presidente Nereu' %}selected{% endif %}
+                        >
+                            Presidente Nereu
+                        </option>
+
+                        <option
+                            value="Rio do Campo"
+                            {% if ecoponto.cidade == 'Rio do Campo' %}selected{% endif %}
+                        >
+                            Rio do Campo
+                        </option>
+
+                        <option
+                            value="Rio do Oeste"
+                            {% if ecoponto.cidade == 'Rio do Oeste' %}selected{% endif %}
+                        >
+                            Rio do Oeste
+                        </option>
+
+                        <option
+                            value="Rio do Sul"
+                            {% if ecoponto.cidade == 'Rio do Sul' %}selected{% endif %}
+                        >
+                            Rio do Sul
+                        </option>
+
+                        <option
+                            value="Salete"
+                            {% if ecoponto.cidade == 'Salete' %}selected{% endif %}
+                        >
+                            Salete
+                        </option>
+
+                        <option
+                            value="Santa Terezinha"
+                            {% if ecoponto.cidade == 'Santa Terezinha' %}selected{% endif %}
+                        >
+                            Santa Terezinha
+                        </option>
+
+                        <option
+                            value="Taió"
+                            {% if ecoponto.cidade == 'Taió' %}selected{% endif %}
+                        >
+                            Taió
+                        </option>
+
+                        <option
+                            value="Trombudo Central"
+                            {% if ecoponto.cidade == 'Trombudo Central' %}selected{% endif %}
+                        >
+                            Trombudo Central
+                        </option>
+
+                        <option
+                            value="Vidal Ramos"
+                            {% if ecoponto.cidade == 'Vidal Ramos' %}selected{% endif %}
+                        >
+                            Vidal Ramos
+                        </option>
+
+                        <option
+                            value="Vitor Meireles"
+                            {% if ecoponto.cidade == 'Vitor Meireles' %}selected{% endif %}
+                        >
+                            Vitor Meireles
+                        </option>
+
+                        <option
+                            value="Witmarsum"
+                            {% if ecoponto.cidade == 'Witmarsum' %}selected{% endif %}
+                        >
+                            Witmarsum
+                        </option>
+
+                    </select>
+
+                    <label for="localizacao_maps">
+                        <strong>
+                            Localização no Google Maps
+                        </strong>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="localizacao_maps"
+                        name="localizacao_maps"
+                        value="{{ ecoponto.localizacao_maps }}"
+                        placeholder="Cole aqui o link do Google Maps"
+                    >
+
+                    <small
+                        class="text-muted d-block mb-3"
+                    >
+                        Use o link de compartilhamento
+                        do local no Google Maps.
+                    </small>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <label for="latitude">
+                                <strong>Latitude</strong>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="latitude"
+                                name="latitude"
+                                value="{% if ecoponto.latitude is not none %}{{ ecoponto.latitude }}{% endif %}"
+                                placeholder="Ex.: -27.2145"
+                            >
+
+                            <small
+                                class="text-muted d-block mb-3"
+                            >
+                                Valor entre -90 e 90.
+                            </small>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label for="longitude">
+                                <strong>Longitude</strong>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="longitude"
+                                name="longitude"
+                                value="{% if ecoponto.longitude is not none %}{{ ecoponto.longitude }}{% endif %}"
+                                placeholder="Ex.: -49.6432"
+                            >
+
+                            <small
+                                class="text-muted d-block mb-3"
+                            >
+                                Valor entre -180 e 180.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <label for="imagem">
+                        <strong>Imagem</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="imagem"
+                        name="imagem"
+                        value="{{ ecoponto.imagem }}"
+                        placeholder="Ex.: EcoPonto.JPEG"
+                    >
+
+                    <small
+                        class="text-muted d-block mb-3"
+                    >
+                        Informe somente o nome do arquivo
+                        salvo em static/img/ecopontos.
+                    </small>
+
+                    <label for="descricao">
+                        <strong>Descrição</strong>
+                    </label>
+
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        rows="5"
+                    >{{ ecoponto.descricao }}</textarea>
+
+                    <hr>
+
+                    <h4 class="mb-3">
+                        Materiais aceitos
+                    </h4>
+
+                    {% if materiais %}
+
+                    <div class="row">
+
+                        {% for material in materiais %}
+
+                        <div class="col-md-6 mb-2">
+
+                            <div class="form-check">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    name="materiais"
+                                    value="{{ material.id }}"
+                                    id="material_{{ material.id }}"
+
+                                    {% if material.id in materiais_associados_ids %}
+                                    checked
+                                    {% endif %}
+                                >
+
+                                <label
+                                    class="form-check-label"
+                                    for="material_{{ material.id }}"
+                                >
+
+                                    {{ material.nome }}
+
+                                    {% if material.categoria %}
+
+                                        - {{ material.categoria }}
+
+                                    {% endif %}
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-info">
+
+                        Nenhum material cadastrado ainda.
+
+                    </div>
+
+                    {% endif %}
+
+                    <div
+                        class="d-flex gap-2 flex-wrap mt-4"
+                    >
+
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                        >
+                            Salvar Alterações
+                        </button>
+
+                        <a
+                            href="{{
+                                url_for(
+                                    'detalhes_ecoponto',
+                                    id=ecoponto.id
+                                )
+                            }}"
+                            class="btn btn-secondary"
+                        >
+                            Cancelar
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    >
+    </script>
+
+</body>
+
+</html>

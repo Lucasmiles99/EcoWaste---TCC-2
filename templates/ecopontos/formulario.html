@@ -2,6 +2,7 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,180 +10,424 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Cadastrar Ecoponto - EcoWaste</title>
+    <title>
+        Cadastrar Ecoponto - EcoWaste
+    </title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
 
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='css/style.css') }}"
     >
+
 </head>
 
 <body>
 
-<header>
-    <h2>EcoWaste</h2>
-</header>
+    <header class="ecowaste-header">
 
-<main>
+        <div class="container-fluid">
 
-    <h1>Cadastrar Ecoponto</h1>
+            <div class="row align-items-center">
 
-    <p>
-        Informe os dados do ponto de recebimento de resíduos.
-    </p>
+                <div class="col-4 text-start">
 
-    <div class="card">
+                    <img
+                        src="{{ url_for('static', filename='img/logo-ifc.jpg') }}"
+                        alt="Instituto Federal Catarinense"
+                        class="logo-ifc"
+                    >
 
-        <form
-            action="{{ url_for('salvar_ecoponto') }}"
-            method="POST"
-        >
+                </div>
 
-            <label for="nome">
-                <strong>Nome do Ecoponto</strong>
-            </label>
+                <div class="col-4 text-center">
 
-            <input
-                type="text"
-                id="nome"
-                name="nome"
-                required
-                placeholder="Ex.: Ecoponto Municipal"
-            >
+                    <h1 class="ecowaste-title">
+                        EcoWaste
+                    </h1>
 
-            <label for="endereco">
-                <strong>Endereço</strong>
-            </label>
+                </div>
 
-            <input
-                type="text"
-                id="endereco"
-                name="endereco"
-                required
-                placeholder="Ex.: Rua XV de Novembro, 100"
-            >
+                <div class="col-4 text-end">
 
-            <label for="cidade">
-                <strong>Cidade</strong>
-            </label>
+                    <img
+                        src="{{ url_for('static', filename='img/logo-sustentabilidade.png') }}"
+                        alt="Sustentabilidade"
+                        class="logo-sustentabilidade"
+                    >
 
-            <input
-                type="text"
-                id="cidade"
-                name="cidade"
-                required
-                placeholder="Ex.: Rio do Sul"
-            >
-
-            <label for="localizacao_maps">
-                <strong>Localização no Google Maps</strong>
-            </label>
-
-            <input
-                type="text"
-                id="localizacao_maps"
-                name="localizacao_maps"
-                placeholder="Cole aqui o link do Google Maps"
-            >
-
-            <label for="imagem">
-                <strong>Imagem</strong>
-            </label>
-
-            <input
-                type="text"
-                id="imagem"
-                name="imagem"
-                placeholder="Ex.: ecoponto_rio_do_sul.jpg"
-            >
-
-            <label for="descricao">
-                <strong>Descrição</strong>
-            </label>
-
-            <textarea
-                id="descricao"
-                name="descricao"
-                rows="5"
-                placeholder="Descreva o Ecoponto..."
-            ></textarea>
-
-            <h3>Materiais aceitos</h3>
-
-            {% if materiais %}
-
-                {% for material in materiais %}
-
-                    <div style="margin-bottom: 10px;">
-
-                        <label>
-
-                            <input
-                                type="checkbox"
-                                name="materiais"
-                                value="{{ material.id }}"
-                                style="
-                                    width: auto;
-                                    margin-right: 8px;
-                                "
-                            >
-
-                            {{ material.nome }}
-
-                            {% if material.categoria %}
-
-                                - {{ material.categoria }}
-
-                            {% endif %}
-
-                        </label>
-
-                    </div>
-
-                {% endfor %}
-
-            {% else %}
-
-                <p>
-                    Nenhum material cadastrado ainda.
-                </p>
-
-                <p>
-                    Cadastre materiais antes de associá-los ao Ecoponto.
-                </p>
-
-            {% endif %}
-
-            <div
-                style="
-                    margin-top: 25px;
-                    display: flex;
-                    gap: 10px;
-                    flex-wrap: wrap;
-                "
-            >
-
-                <button
-                    type="submit"
-                    class="botao"
-                >
-                    Salvar Ecoponto
-                </button>
-
-                <a
-                    href="{{ url_for('listar_ecopontos') }}"
-                    class="botao"
-                >
-                    Voltar
-                </a>
+                </div>
 
             </div>
 
-        </form>
+        </div>
 
-    </div>
+    </header>
 
-</main>
+    <main class="container py-4">
+
+        <div class="card">
+
+            <div class="card-body">
+
+                <h2 class="mb-2">
+                    Cadastrar Ecoponto
+                </h2>
+
+                <p class="mb-4">
+                    Informe os dados do ponto de recebimento de resíduos.
+                </p>
+
+                <form
+                    action="{{ url_for('salvar_ecoponto') }}"
+                    method="POST"
+                >
+
+                    <label for="nome">
+                        <strong>Nome do Ecoponto</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="nome"
+                        name="nome"
+                        required
+                        placeholder="Ex.: Ecoponto Municipal"
+                    >
+
+                    <label for="endereco">
+                        <strong>Endereço</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="endereco"
+                        name="endereco"
+                        required
+                        placeholder="Ex.: Rua XV de Novembro, 100"
+                    >
+
+                    <label for="cidade">
+                        <strong>Cidade</strong>
+                    </label>
+
+                    <select
+                        id="cidade"
+                        name="cidade"
+                        required
+                    >
+
+                        <option value="" selected disabled>
+                            Selecione o município
+                        </option>
+
+                        <option value="Agrolândia">
+                            Agrolândia
+                        </option>
+
+                        <option value="Agronômica">
+                            Agronômica
+                        </option>
+
+                        <option value="Atalanta">
+                            Atalanta
+                        </option>
+
+                        <option value="Aurora">
+                            Aurora
+                        </option>
+
+                        <option value="Braço do Trombudo">
+                            Braço do Trombudo
+                        </option>
+
+                        <option value="Chapadão do Lageado">
+                            Chapadão do Lageado
+                        </option>
+
+                        <option value="Dona Emma">
+                            Dona Emma
+                        </option>
+
+                        <option value="Ibirama">
+                            Ibirama
+                        </option>
+
+                        <option value="Imbuia">
+                            Imbuia
+                        </option>
+
+                        <option value="Ituporanga">
+                            Ituporanga
+                        </option>
+
+                        <option value="José Boiteux">
+                            José Boiteux
+                        </option>
+
+                        <option value="Laurentino">
+                            Laurentino
+                        </option>
+
+                        <option value="Lontras">
+                            Lontras
+                        </option>
+
+                        <option value="Mirim Doce">
+                            Mirim Doce
+                        </option>
+
+                        <option value="Petrolândia">
+                            Petrolândia
+                        </option>
+
+                        <option value="Pouso Redondo">
+                            Pouso Redondo
+                        </option>
+
+                        <option value="Presidente Getúlio">
+                            Presidente Getúlio
+                        </option>
+
+                        <option value="Presidente Nereu">
+                            Presidente Nereu
+                        </option>
+
+                        <option value="Rio do Campo">
+                            Rio do Campo
+                        </option>
+
+                        <option value="Rio do Oeste">
+                            Rio do Oeste
+                        </option>
+
+                        <option value="Rio do Sul">
+                            Rio do Sul
+                        </option>
+
+                        <option value="Salete">
+                            Salete
+                        </option>
+
+                        <option value="Santa Terezinha">
+                            Santa Terezinha
+                        </option>
+
+                        <option value="Taió">
+                            Taió
+                        </option>
+
+                        <option value="Trombudo Central">
+                            Trombudo Central
+                        </option>
+
+                        <option value="Vidal Ramos">
+                            Vidal Ramos
+                        </option>
+
+                        <option value="Vitor Meireles">
+                            Vitor Meireles
+                        </option>
+
+                        <option value="Witmarsum">
+                            Witmarsum
+                        </option>
+
+                    </select>
+
+                    <label for="localizacao_maps">
+                        <strong>
+                            Localização no Google Maps
+                        </strong>
+                    </label>
+
+                    <input
+                        type="url"
+                        id="localizacao_maps"
+                        name="localizacao_maps"
+                        placeholder="Cole aqui o link do Google Maps"
+                    >
+
+                    <small
+                        class="text-muted d-block mb-3"
+                    >
+                        Use o link de compartilhamento
+                        do local no Google Maps.
+                    </small>
+
+                    <div class="row">
+
+                        <div class="col-md-6">
+
+                            <label for="latitude">
+                                <strong>Latitude</strong>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="latitude"
+                                name="latitude"
+                                placeholder="Ex.: -27.2145"
+                            >
+
+                            <small
+                                class="text-muted d-block mb-3"
+                            >
+                                Valor entre -90 e 90.
+                            </small>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <label for="longitude">
+                                <strong>Longitude</strong>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="longitude"
+                                name="longitude"
+                                placeholder="Ex.: -49.6432"
+                            >
+
+                            <small
+                                class="text-muted d-block mb-3"
+                            >
+                                Valor entre -180 e 180.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                    <label for="imagem">
+                        <strong>Imagem</strong>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="imagem"
+                        name="imagem"
+                        placeholder="Ex.: EcoPonto.JPEG"
+                    >
+
+                    <small
+                        class="text-muted d-block mb-3"
+                    >
+                        Informe somente o nome do arquivo
+                        salvo em static/img/ecopontos.
+                    </small>
+
+                    <label for="descricao">
+                        <strong>Descrição</strong>
+                    </label>
+
+                    <textarea
+                        id="descricao"
+                        name="descricao"
+                        rows="5"
+                        placeholder="Descreva o Ecoponto..."
+                    ></textarea>
+
+                    <hr>
+
+                    <h4 class="mb-3">
+                        Materiais aceitos
+                    </h4>
+
+                    {% if materiais %}
+
+                    <div class="row">
+
+                        {% for material in materiais %}
+
+                        <div class="col-md-6 mb-2">
+
+                            <div class="form-check">
+
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    name="materiais"
+                                    value="{{ material.id }}"
+                                    id="material_{{ material.id }}"
+                                >
+
+                                <label
+                                    class="form-check-label"
+                                    for="material_{{ material.id }}"
+                                >
+
+                                    {{ material.nome }}
+
+                                    {% if material.categoria %}
+
+                                        - {{ material.categoria }}
+
+                                    {% endif %}
+
+                                </label>
+
+                            </div>
+
+                        </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-info">
+
+                        Nenhum material cadastrado ainda.
+
+                        <br>
+
+                        Cadastre materiais antes de
+                        associá-los ao Ecoponto.
+
+                    </div>
+
+                    {% endif %}
+
+                    <div
+                        class="d-flex gap-2 flex-wrap mt-4"
+                    >
+
+                        <button
+                            type="submit"
+                            class="btn btn-success"
+                        >
+                            Salvar Ecoponto
+                        </button>
+
+                        <a
+                            href="{{ url_for('listar_ecopontos') }}"
+                            class="btn btn-secondary"
+                        >
+                            Voltar
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    >
+    </script>
 
 </body>
 

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+
+{% block title %}
+EcoWaste - Checklist Ambiental
+{% endblock %}
+
+{% block content %}
+
+{% set imagens_municipios = {
+    'Agrolândia': 'agrolandia.jpg',
+    'Agronômica': 'agronomica.jpg',
+    'Atalanta': 'atalanta.jpg',
+    'Aurora': 'aurora.jpg',
+    'Braço do Trombudo': 'braco-do-trombudo.jpg',
+    'Chapadão do Lageado': 'chapadao-do-lageado.jpg',
+    'Dona Emma': 'dona-emma.jpg',
+    'Ibirama': 'ibirama.jpg',
+    'Imbuia': 'imbuia.jpg',
+    'Ituporanga': 'ituporanga.jpg',
+    'José Boiteux': 'jose-boiteux.jpg',
+    'Laurentino': 'laurentino.jpg',
+    'Lontras': 'lontras.jpg',
+    'Mirim Doce': 'mirim-doce.jpg',
+    'Petrolândia': 'petrolandia.jpg',
+    'Pouso Redondo': 'pouso-redondo.jpg',
+    'Presidente Getúlio': 'presidente-getulio.jpg',
+    'Presidente Nereu': 'presidente-nereu.jpg',
+    'Rio do Campo': 'rio-do-campo.jpg',
+    'Rio do Oeste': 'rio-do-oeste.jpg',
+    'Rio do Sul': 'rio-do-sul.jpg',
+    'Salete': 'salete.jpg',
+    'Santa Terezinha': 'santa-terezinha.jpg',
+    'Taió': 'taio.jpg',
+    'Trombudo Central': 'trombudo-central.jpg',
+    'Vidal Ramos': 'vidal-ramos.jpg',
+    'Vitor Meireles': 'vitor-meireles.jpg',
+    'Witmarsum': 'witmarsum.jpg'
+} %}
+
+<div class="container">
+
+    <div
+        class="d-flex
+               justify-content-between
+               align-items-center
+               mb-4"
+    >
+
+        <div>
+
+            <h2>
+                Checklist Ambiental
+            </h2>
+
+            <p class="text-muted mb-0">
+                Municípios do Alto Vale do Itajaí
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('inicio') }}"
+            class="btn btn-outline-secondary"
+        >
+            Voltar
+        </a>
+
+    </div>
+
+    {% if municipios %}
+
+        <div class="row">
+
+            {% for municipio in municipios %}
+
+                <div class="col-lg-6 mb-4">
+
+                    <div
+                        class="card
+                               shadow-sm
+                               h-100"
+                    >
+
+                        <div class="row g-0 h-100">
+
+                            <div class="col-4">
+
+                                {% if municipio.nome in imagens_municipios %}
+
+                                    <img
+                                        src="{{ url_for(
+                                            'static',
+                                            filename='img/municipios/' +
+                                            imagens_municipios[municipio.nome]
+                                        ) }}"
+                                        class="img-fluid rounded-start h-100"
+                                        style="
+                                            width: 100%;
+                                            min-height: 200px;
+                                            object-fit: cover;
+                                        "
+                                        alt="Imagem de {{ municipio.nome }}"
+                                    >
+
+                                {% else %}
+
+                                    <div
+                                        class="
+                                            h-100
+                                            d-flex
+                                            align-items-center
+                                            justify-content-center
+                                            bg-light
+                                            rounded-start
+                                        "
+                                        style="min-height: 200px;"
+                                    >
+                                        <span class="text-muted">
+                                            Sem imagem
+                                        </span>
+                                    </div>
+
+                                {% endif %}
+
+                            </div>
+
+                            <div class="col-8">
+
+                                <div
+                                    class="
+                                        card-body
+                                        d-flex
+                                        flex-column
+                                        h-100
+                                    "
+                                >
+
+                                    <h5 class="card-title">
+                                        {{ municipio.nome }}
+                                    </h5>
+
+                                    <p
+                                        class="
+                                            text-muted
+                                            small
+                                            mb-2
+                                        "
+                                    >
+                                        Alto Vale do Itajaí
+                                    </p>
+
+                                    <p
+                                        class="
+                                            card-text
+                                            flex-grow-1
+                                        "
+                                    >
+                                        Consulte as perguntas
+                                        e respostas ambientais
+                                        do município.
+                                    </p>
+
+                                    <a
+                                        href="{{ url_for(
+                                            'detalhes_checklist',
+                                            municipio_id=municipio.id
+                                        ) }}"
+                                        class="
+                                            btn
+                                            btn-success
+                                            btn-sm
+                                            mt-auto
+                                        "
+                                    >
+                                        Ver Checklist
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div
+            class="alert alert-warning"
+            role="alert"
+        >
+            Nenhum município
+            cadastrado no momento.
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

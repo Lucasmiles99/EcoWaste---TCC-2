@@ -13,15 +13,19 @@ class EcopontoRepository:
                 endereco,
                 cidade,
                 localizacao_maps,
+                latitude,
+                longitude,
                 imagem,
                 descricao
             )
-            VALUES (?, ?, ?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             ecoponto.nome,
             ecoponto.endereco,
             ecoponto.cidade,
             ecoponto.localizacao_maps,
+            ecoponto.latitude,
+            ecoponto.longitude,
             ecoponto.imagem,
             ecoponto.descricao
         ))
@@ -45,6 +49,8 @@ class EcopontoRepository:
                 endereco,
                 cidade,
                 localizacao_maps,
+                latitude,
+                longitude,
                 imagem,
                 descricao
             FROM ecoponto
@@ -62,6 +68,8 @@ class EcopontoRepository:
                 endereco=registro["endereco"],
                 cidade=registro["cidade"],
                 localizacao_maps=registro["localizacao_maps"],
+                latitude=registro["latitude"],
+                longitude=registro["longitude"],
                 imagem=registro["imagem"],
                 descricao=registro["descricao"]
             )
@@ -83,6 +91,8 @@ class EcopontoRepository:
                 endereco,
                 cidade,
                 localizacao_maps,
+                latitude,
+                longitude,
                 imagem,
                 descricao
             FROM ecoponto
@@ -102,6 +112,8 @@ class EcopontoRepository:
             endereco=registro["endereco"],
             cidade=registro["cidade"],
             localizacao_maps=registro["localizacao_maps"],
+            latitude=registro["latitude"],
+            longitude=registro["longitude"],
             imagem=registro["imagem"],
             descricao=registro["descricao"]
         )
@@ -117,6 +129,8 @@ class EcopontoRepository:
                 endereco = ?,
                 cidade = ?,
                 localizacao_maps = ?,
+                latitude = ?,
+                longitude = ?,
                 imagem = ?,
                 descricao = ?
             WHERE id = ?
@@ -125,6 +139,8 @@ class EcopontoRepository:
             ecoponto.endereco,
             ecoponto.cidade,
             ecoponto.localizacao_maps,
+            ecoponto.latitude,
+            ecoponto.longitude,
             ecoponto.imagem,
             ecoponto.descricao,
             ecoponto.id

@@ -6,9 +6,8 @@ body {
 }
 
 header {
-    background-color: #1b5e20;
+    background-color: #123f22;
     color: white;
-    padding: 20px;
 }
 
 header h2 {
@@ -114,4 +113,81 @@ select:focus,
 textarea:focus {
     outline: none;
     border-color: #2e7d32;
+}
+
+.ecowaste-header {
+    background-color: #123f22;
+    min-height: 120px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    border-bottom: 4px solid #66bb6a;
+}
+
+.ecowaste-header .container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ecowaste-header .row {
+    width: 100%;
+    margin: 0;
+}
+
+.ecowaste-header .col-4 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.ecowaste-title {
+    color: #8ee68e;
+    font-weight: 700;
+    font-size: 3rem;
+    letter-spacing: 1px;
+    margin: 0;
+    text-shadow:
+        0 1px 2px
+        rgba(0, 0, 0, 0.25);
+}
+
+.logo-ifc {
+    height: 110px;
+    max-height: 110px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: 0;
+}
+
+.logo-sustentabilidade {
+    height: 110px;
+    max-height: 110px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+    background-color: #123f22;
+}
+
+@media (
+    max-width: 768px
+) {
+
+    .ecowaste-header {
+        min-height: 90px;
+        padding: 0 8px;
+    }
+
+    .ecowaste-title {
+        font-size: 2rem;
+    }
+
+    .logo-ifc,
+    .logo-sustentabilidade {
+        height: 78px;
+        max-height: 78px;
+    }
 }

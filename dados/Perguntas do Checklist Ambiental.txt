@@ -1,0 +1,81 @@
+									Perguntas do Checklist Ambiental
+
+1. A prefeitura possui algum departamento responsável pela gestão de resíduos sólidos e quem é o responsável técnico?
+
+2. O Plano Municipal de Resíduos Sólidos está atualizado?
+
+3. Existe respaldo ou acompanhamento desse plano na prática?
+
+4. A prefeitura realiza fiscalização ostensiva regular sobre o descarte de resíduos?
+
+5. Qual é o destino final dos resíduos recicláveis e quais são as cooperativas de catadores cadastradas no município?
+
+6. Quais leis e diretrizes municipais e nacionais regem a gestão de resíduos no município?
+
+7. Existem canais de denúncia para descarte irregular de lixo e com que frequência são utilizados?
+
+8. Todas as empresas da cidade são obrigadas a apresentar relatórios mensais de descarte de resíduos?
+
+9. Quais são as leis ou decretos que preveem sanções e penalidades para infrações ambientais no município?
+
+10. A prefeitura oferece algum incentivo fiscal direto para empresas que descartam resíduos de forma correta?
+
+11. Como funciona a destinação de resíduos eletrônicos para empresas privadas e do setor de TIC?
+
+12. O descarte inadequado ou irregular de resíduos ainda é um problema frequente na cidade?
+
+13. Quais são os tipos de eletroeletrônicos mais comumente descartados e para onde vão os itens de maior porte?
+
+14. Há registros ou regiões da cidade onde o volume de descarte de lixo é maior e qual a frequência de coleta nessas áreas?
+
+15. Houve algum registro ou aplicação recente de multa por descumprimento das regras de descarte de e-lixo?
+
+16. A prefeitura possui algum programa de coleta própria exclusivo para resíduos eletrônicos corporativos?
+
+17. O município possui programas como o Penso, Logo Destino (PLD) e onde ficam os pontos de coleta de lâmpadas, pilhas e baterias?
+
+18. Os resíduos volumosos exigem atenção ou logística diferenciada por parte da prefeitura/cooperativas?
+
+19. Existe cobrança de taxa específica para a retirada de lixo eletrônico empresarial?
+
+20. O município já conta com Pontos de Entrega Voluntária (PEV) estruturados para lixo eletrônico ou há previsão de instalação?
+
+21. A concessionária de limpeza urbana possui plano de metas para a implantação de novos PEVs?
+
+22. As taxas e procedimentos de coleta são uniformes em todos os bairros e setores?
+
+23. Existe outro fiscal ou responsável direto no departamento além do engenheiro sanitarista?
+
+24. Você acredita que o descarte incorreto ocorre por falta de conhecimento da população/empresas sobre os pontos de coleta?
+
+25. As empresas locais têm demonstrado maior engajamento ou empenho na gestão ambiental nos últimos anos?
+
+26. Qual é hoje a principal dificuldade ou gargalo operacional na gestão de resíduos sólidos da cidade?
+
+27. Qual é o principal obstáculo enfrentado pelas empresas para manter a gestão correta de resíduos?
+
+28. De onde vem a maior parte do volume de resíduos recebidos no município?
+
+29. A prefeitura realiza campanhas publicitárias pagas contínuas sobre o descarte de e-lixo?
+
+30. O município tem interesse em adotar novas tecnologias para controle e mapeamento do descarte?
+
+31. Existe a possibilidade ou tentativa de implantar programas de benefícios (como cashback ou créditos por descarte) na cidade?
+
+32. A melhoria da gestão de resíduos traz impactos socioeconômicos diretos para as cooperativas de catadores locais?
+
+33. O município mantém parcerias com instituições de ensino superior (como a UNIDAVI) para projetos ambientais?
+
+34. Qual a importância de trabalhos acadêmicos e projetos de tecnologia voltados para a gestão de resíduos no Alto Vale?
+
+35. Qual seria a orientação da prefeitura para as empresas reduzirem custos e melhorarem a gestão interna de resíduos?
+
+36. Como você avalia a atual estrutura de descarte do município em relação à conformidade legal?
+
+37. Existe alguma restrição formal para que o setor privado crie rotas de coleta própria de lixo eletrônico?
+
+38. A prefeitura teria interesse em utilizar este projeto de TCC (sistema em Python + Power BI) como um plano piloto?
+
+39. A prefeitura apoia a continuidade da coleta de dados e expansão do estudo no setor produtivo/ACIRS?
+
+40. Onde a população e as empresas podem consultar as informações oficiais sobre horários e rotas de coleta de lixo?

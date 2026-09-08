@@ -1,6 +1,5 @@
 from services.empresa_service import EmpresaService
 
-
 service = EmpresaService()
 
 empresa = service.cadastrar(
