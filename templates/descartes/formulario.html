@@ -1,258 +1,186 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "base.html" %}
 
-<head>
+{% block title %}
+Registrar Descarte - EcoWaste
+{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1"
-    >
+<div class="card">
 
-    <title>
-        Registrar Descarte - EcoWaste
-    </title>
+    <div class="card-body">
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-    >
+        <h2 class="mb-4">
+            Registrar Descarte
+        </h2>
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}"
-    >
+        <form
+            action="/descartes/novo"
+            method="POST"
+        >
 
-</head>
+            <label for="empresa_id">
+                Empresa
+            </label>
 
-<body>
+            <select
+                id="empresa_id"
+                name="empresa_id"
+                required
+            >
 
-    <header class="ecowaste-header">
+                <option value="">
+                    Selecione uma empresa
+                </option>
 
-        <div class="container-fluid">
+                {% for empresa in empresas %}
 
-            <div class="row align-items-center">
+                <option value="{{ empresa.id }}">
+                    {{ empresa.nome }}
+                </option>
 
-                <div class="col-4 text-start">
+                {% endfor %}
 
-                    <img
-                        src="{{ url_for('static', filename='img/logo-ifc.jpg') }}"
-                        alt="Instituto Federal Catarinense"
-                        class="logo-ifc"
-                    >
+            </select>
 
-                </div>
+            <label for="equipamento_id">
+                Equipamento
+            </label>
 
-                <div class="col-4 text-center">
+            <select
+                id="equipamento_id"
+                name="equipamento_id"
+                required
+            >
 
-                    <h1 class="ecowaste-title">
-                        EcoWaste
-                    </h1>
+                <option value="">
+                    Selecione um equipamento
+                </option>
 
-                </div>
+                {% for equipamento in equipamentos %}
 
-                <div class="col-4 text-end">
+                <option value="{{ equipamento.id }}">
+                    {{ equipamento.nome }}
+                </option>
 
-                    <img
-                        src="{{ url_for('static', filename='img/logo-sustentabilidade.png') }}"
-                        alt="Sustentabilidade"
-                        class="logo-sustentabilidade"
-                    >
+                {% endfor %}
 
-                </div>
+            </select>
 
-            </div>
+            <label for="ecoponto_id">
+                Ecoponto
+            </label>
 
-        </div>
+            <select
+                id="ecoponto_id"
+                name="ecoponto_id"
+            >
 
-    </header>
+                <option value="">
+                    Não informar ecoponto
+                </option>
 
-    <main class="container py-4">
+                {% for ecoponto in ecopontos %}
 
-        <div class="card">
+                <option value="{{ ecoponto.id }}">
+                    {{ ecoponto.nome }}
+                </option>
 
-            <div class="card-body">
+                {% endfor %}
 
-                <h2 class="mb-4">
-                    Registrar Descarte
-                </h2>
+            </select>
 
-                <form
-                    action="/descartes/novo"
-                    method="POST"
+            <label for="quantidade">
+                Quantidade
+            </label>
+
+            <input
+                type="number"
+                id="quantidade"
+                name="quantidade"
+                min="1"
+                value="1"
+                required
+            >
+
+            <label for="data_descarte">
+                Data do descarte
+            </label>
+
+            <input
+                type="date"
+                id="data_descarte"
+                name="data_descarte"
+            >
+
+            <label for="status">
+                Status
+            </label>
+
+            <select
+                id="status"
+                name="status"
+            >
+
+                <option value="">
+                    Selecione um status
+                </option>
+
+                <option value="Planejado">
+                    Planejado
+                </option>
+
+                <option value="Aguardando coleta">
+                    Aguardando coleta
+                </option>
+
+                <option value="Em transporte">
+                    Em transporte
+                </option>
+
+                <option value="Realizado">
+                    Realizado
+                </option>
+
+                <option value="Cancelado">
+                    Cancelado
+                </option>
+
+            </select>
+
+            <label for="observacao">
+                Observação
+            </label>
+
+            <textarea
+                id="observacao"
+                name="observacao"
+                rows="4"
+                placeholder="Digite alguma informação adicional sobre o descarte."
+            ></textarea>
+
+            <div class="d-flex gap-2 mt-3">
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
                 >
+                    Registrar descarte
+                </button>
 
-                    <label for="empresa_id">
-                        Empresa
-                    </label>
-
-                    <select
-                        id="empresa_id"
-                        name="empresa_id"
-                        required
-                    >
-
-                        <option value="">
-                            Selecione uma empresa
-                        </option>
-
-                        {% for empresa in empresas %}
-
-                        <option value="{{ empresa.id }}">
-                            {{ empresa.nome }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                    <label for="equipamento_id">
-                        Equipamento
-                    </label>
-
-                    <select
-                        id="equipamento_id"
-                        name="equipamento_id"
-                        required
-                    >
-
-                        <option value="">
-                            Selecione um equipamento
-                        </option>
-
-                        {% for equipamento in equipamentos %}
-
-                        <option value="{{ equipamento.id }}">
-                            {{ equipamento.nome }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                    <label for="ecoponto_id">
-                        Ecoponto
-                    </label>
-
-                    <select
-                        id="ecoponto_id"
-                        name="ecoponto_id"
-                    >
-
-                        <option value="">
-                            Não informar ecoponto
-                        </option>
-
-                        {% for ecoponto in ecopontos %}
-
-                        <option value="{{ ecoponto.id }}">
-                            {{ ecoponto.nome }}
-                        </option>
-
-                        {% endfor %}
-
-                    </select>
-
-                    <label for="quantidade">
-                        Quantidade
-                    </label>
-
-                    <input
-                        type="number"
-                        id="quantidade"
-                        name="quantidade"
-                        min="1"
-                        value="1"
-                        required
-                    >
-
-                    <label for="data_descarte">
-                        Data do descarte
-                    </label>
-
-                    <input
-                        type="date"
-                        id="data_descarte"
-                        name="data_descarte"
-                    >
-
-                    <label for="status">
-                        Status
-                    </label>
-
-                    <select
-                        id="status"
-                        name="status"
-                    >
-
-                        <option value="">
-                            Selecione um status
-                        </option>
-
-                        <option value="Planejado">
-                            Planejado
-                        </option>
-
-                        <option value="Aguardando coleta">
-                            Aguardando coleta
-                        </option>
-
-                        <option value="Em transporte">
-                            Em transporte
-                        </option>
-
-                        <option value="Realizado">
-                            Realizado
-                        </option>
-
-                        <option value="Cancelado">
-                            Cancelado
-                        </option>
-
-                    </select>
-
-                    <label for="observacao">
-                        Observação
-                    </label>
-
-                    <textarea
-                        id="observacao"
-                        name="observacao"
-                        rows="4"
-                        placeholder="Digite alguma informação adicional sobre o descarte."
-                    ></textarea>
-
-                    <div class="d-flex gap-2 mt-3">
-
-                        <button
-                            type="submit"
-                            class="btn btn-success"
-                        >
-                            Registrar descarte
-                        </button>
-
-                        <a
-                            href="/descartes"
-                            class="btn btn-secondary"
-                        >
-                            Cancelar
-                        </a>
-
-                    </div>
-
-                </form>
+                <a
+                    href="/descartes"
+                    class="btn btn-secondary"
+                >
+                    Cancelar
+                </a>
 
             </div>
 
-        </div>
+        </form>
 
-    </main>
+    </div>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-    </script>
+</div>
 
-</body>
-
-</html>
+{% endblock %}

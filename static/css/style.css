@@ -145,31 +145,60 @@ textarea:focus {
     font-size: 3rem;
     letter-spacing: 1px;
     margin: 0;
+
     text-shadow:
         0 1px 2px
         rgba(0, 0, 0, 0.25);
 }
 
-.logo-ifc {
+/* Caixa da logo do IFC com o mesmo tamanho da logo de sustentabilidade */
+.logo-ifc-box {
+    width: 110px;
     height: 110px;
-    max-height: 110px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    display: block;
+
+    background-color: white;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     margin-left: 0;
 }
 
-.logo-sustentabilidade {
-    height: 110px;
-    max-height: 110px;
-    width: auto;
-    max-width: 100%;
+/* A imagem recebe zoom para eliminar visualmente o excesso de espaço branco */
+.logo-ifc {
+    width: 130px;
+    height: 130px;
+
+    min-width: 130px;
+    min-height: 130px;
+
     object-fit: contain;
+
     display: block;
+}
+
+.logo-sustentabilidade {
+    width: 110px;
+    height: 110px;
+
+    max-width: 110px;
+    max-height: 110px;
+
+    object-fit: contain;
+
+    display: block;
+
     margin-left: auto;
     margin-right: 0;
-    background-color: #123f22;
+
+    background-color: white;
+
+    border-radius: 12px;
 }
 
 @media (
@@ -185,9 +214,24 @@ textarea:focus {
         font-size: 2rem;
     }
 
-    .logo-ifc,
-    .logo-sustentabilidade {
+    .logo-ifc-box {
+        width: 78px;
         height: 78px;
+    }
+
+    .logo-ifc {
+        width: 92px;
+        height: 92px;
+
+        min-width: 92px;
+        min-height: 92px;
+    }
+
+    .logo-sustentabilidade {
+        width: 78px;
+        height: 78px;
+
+        max-width: 78px;
         max-height: 78px;
     }
 }

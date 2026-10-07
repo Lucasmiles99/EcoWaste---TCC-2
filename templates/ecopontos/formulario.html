@@ -32,22 +32,32 @@
 
         <div class="container-fluid">
 
-            <div class="row align-items-center">
+            <div
+                class="
+                    row
+                    align-items-center
+                    w-100
+                "
+            >
 
                 <div class="col-4 text-start">
 
-                    <img
-                        src="{{ url_for('static', filename='img/logo-ifc.jpg') }}"
-                        alt="Instituto Federal Catarinense"
-                        class="logo-ifc"
-                    >
+                    <div class="logo-ifc-box">
+
+                        <img
+                            src="{{ url_for('static', filename='img/logo-ifc.png') }}"
+                            alt="Instituto Federal Catarinense - Campus Rio do Sul"
+                            class="logo-ifc"
+                        >
+
+                    </div>
 
                 </div>
 
                 <div class="col-4 text-center">
 
                     <h1 class="ecowaste-title">
-                        EcoWaste
+                        <span class="eco">Eco</span><span class="waste">Waste</span>
                     </h1>
 
                 </div>
@@ -252,9 +262,7 @@
                         placeholder="Cole aqui o link do Google Maps"
                     >
 
-                    <small
-                        class="text-muted d-block mb-3"
-                    >
+                    <small class="text-muted d-block mb-3">
                         Use o link de compartilhamento
                         do local no Google Maps.
                     </small>
@@ -274,9 +282,7 @@
                                 placeholder="Ex.: -27.2145"
                             >
 
-                            <small
-                                class="text-muted d-block mb-3"
-                            >
+                            <small class="text-muted d-block mb-3">
                                 Valor entre -90 e 90.
                             </small>
 
@@ -295,9 +301,7 @@
                                 placeholder="Ex.: -49.6432"
                             >
 
-                            <small
-                                class="text-muted d-block mb-3"
-                            >
+                            <small class="text-muted d-block mb-3">
                                 Valor entre -180 e 180.
                             </small>
 
@@ -316,9 +320,7 @@
                         placeholder="Ex.: EcoPonto.JPEG"
                     >
 
-                    <small
-                        class="text-muted d-block mb-3"
-                    >
+                    <small class="text-muted d-block mb-3">
                         Informe somente o nome do arquivo
                         salvo em static/img/ecopontos.
                     </small>
@@ -396,9 +398,7 @@
 
                     {% endif %}
 
-                    <div
-                        class="d-flex gap-2 flex-wrap mt-4"
-                    >
+                    <div class="d-flex gap-2 flex-wrap mt-4">
 
                         <button
                             type="submit"
